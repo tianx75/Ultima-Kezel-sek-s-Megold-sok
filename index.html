@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kezelések — The Ultimate Beauty · Prémium Esztétikai Klinika · Buda</title>
+<meta name="description" content="Személyre szabott orvosesztétikai kezelések a The Ultimate Beauty Protocol rendszerében. Botox, hialuronsav, biostimulátorok, szülés utáni regeneráció.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gold:#B8975C;--gold-l:#D4BA7A;--gold-p:#E8D9B8;--gold-d:#9A7A42;
+--cream:#F9F6F1;--warm:#FDFBF7;--sand:#F0EBE1;
+--dk:#151413;--dk-w:#1E1D1A;--dk-m:#2A2824;
+--tx:#2C2A26;--tx-m:#6B6660;--tx-s:#9B9590;--tx-p:#B5AFA8;
+--brd:#DDD6CA;--brd-l:#EAE5DC;--wh:#FFFFFF;
+--hd:'Playfair Display',Georgia,serif;
+--bd:'Outfit','Helvetica Neue',sans-serif;
+--ac:'Cormorant',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--bd);background:var(--warm);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 0;background:rgba(253,251,247,.96);backdrop-filter:blur(20px) saturate(1.2);box-shadow:0 1px 0 var(--brd-l);transition:all .5s}
+.ni{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+.nb{cursor:pointer;display:flex;align-items:baseline;gap:3px;text-decoration:none}
+.nb-n{font-family:var(--hd);font-size:19px;font-weight:500;color:var(--dk);letter-spacing:-.3px}
+.nb-d{width:5px;height:5px;border-radius:50%;background:var(--gold);display:inline-block;margin-left:2px}
+.nr{display:flex;align-items:center;gap:32px}
+.nl{font-family:var(--bd);font-size:12px;font-weight:500;letter-spacing:1.3px;text-transform:uppercase;color:var(--tx-m);cursor:pointer;transition:color .3s;text-decoration:none;position:relative}
+.nl:hover,.nl.ac{color:var(--gold)}
+.nl::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nl:hover::after{width:100%}
+.nc{font-family:var(--bd);font-size:11.5px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--wh);background:var(--dk);border:none;padding:13px 26px;cursor:pointer;transition:all .3s;text-decoration:none}
+.nc:hover{background:var(--gold-d)}
+
+/* ANIMATIONS */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94)}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
+
+/* SHARED */
+.lb{font-family:var(--bd);font-size:10.5px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px}
+.lb-l{color:var(--gold-p)}
+.gl{width:40px;height:1px;background:var(--gold);margin:18px 0;opacity:.45}
+.bt{display:inline-block;font-family:var(--bd);font-size:11.5px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;padding:14px 34px;cursor:pointer;transition:all .4s;border:1px solid;text-decoration:none}
+.bt-d{background:var(--dk);color:var(--wh);border-color:var(--dk)}.bt-d:hover{background:var(--gold-d);border-color:var(--gold-d)}
+.bt-o{background:transparent;color:var(--gold);border-color:var(--gold)}.bt-o:hover{background:var(--gold);color:var(--wh)}
+.bt-ol{background:transparent;color:var(--gold-p);border-color:rgba(212,186,122,.3)}.bt-ol:hover{background:var(--gold);color:var(--dk);border-color:var(--gold)}
+
+/* IMAGE PLACEHOLDER */
+.ip{background:var(--sand);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ip span{font-family:var(--ac);font-size:13px;font-style:italic;color:var(--tx-s);letter-spacing:.3px;text-align:center;padding:16px}
+.ip::before{content:'';position:absolute;inset:0;border:1px solid var(--brd-l);pointer-events:none}
+.ip-d{background:var(--dk-m)}.ip-d span{color:var(--tx-p)}.ip-d::before{border-color:rgba(255,255,255,.04)}
+
+/* TREATMENT CARDS */
+.tc{
+  background:var(--wh);padding:0;border:1px solid var(--brd-l);
+  transition:all .4s cubic-bezier(.25,.46,.45,.94);display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.tc:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.04)}
+.tc-inner{padding:40px 36px;display:flex;flex-direction:column;flex:1}
+.tc-pillar{font-family:var(--bd);font-size:9.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.tc-title{font-family:var(--hd);font-size:26px;font-weight:400;color:var(--dk);margin:0 0 14px;line-height:1.2}
+.tc-desc{font-family:var(--bd);font-size:13.5px;color:var(--tx-m);line-height:1.7;margin:0;flex:1}
+.tc-link{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 36px;border-top:1px solid var(--brd-l);
+  font-family:var(--bd);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--dk);text-decoration:none;transition:all .3s;
+}
+.tc:hover .tc-link{color:var(--gold);background:rgba(184,151,92,.04)}
+.tc-arrow{color:var(--gold);font-size:16px;transition:transform .3s}
+.tc:hover .tc-arrow{transform:translateX(4px)}
+
+/* FOOTER */
+.ft{padding:80px 40px 40px;background:var(--dk-w)}
+.fi{max-width:1320px;margin:0 auto}
+
+@media(max-width:900px){
+  .nr .nl{display:none}
+  .hero-split,.grid-asym,.g2{grid-template-columns:1fr!important}
+  .cards-grid{grid-template-columns:1fr!important}
+  .ft-grid{grid-template-columns:1fr!important}
+  .ni{padding:0 20px}
+  .sec{padding-left:20px!important;padding-right:20px!important}
+  .hero-t{font-size:38px!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="ni">
+<a href="index.html" class="nb"><span class="nb-n">The Ultimate Beauty</span><span class="nb-d"></span></a>
+<div class="nr">
+<a href="index.html" class="nl">Klinika</a>
+<a href="protocol.html" class="nl">Protocol</a>
+<a href="kezelesek.html" class="nl ac">Kezelések</a>
+<a href="#" class="nl">Technológia</a>
+<a href="#" class="nc">Konzultáció</a>
+</div>
+</div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section style="min-height:70vh;display:flex;align-items:center;background:var(--warm);position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;right:0;width:45%;height:100%;background:var(--sand);z-index:0"></div>
+  <div style="position:absolute;top:20%;right:6%;width:1px;height:180px;background:linear-gradient(180deg,var(--gold),transparent);opacity:.12"></div>
+  <div style="position:absolute;bottom:30%;left:45%;width:80px;height:1px;background:var(--gold);opacity:.1"></div>
+
+  <div class="hero-split sec" style="max-width:1320px;margin:0 auto;padding:160px 40px 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative;z-index:1">
+    <div>
+      <div class="rv"><span class="lb">Személyre szabott útvonalak</span></div>
+      <div class="rv d1">
+        <h1 class="hero-t" style="font-family:var(--hd);font-size:48px;font-weight:400;line-height:1.1;color:var(--dk);margin:0 0 20px;letter-spacing:-.5px">
+          Kezelések és <em style="color:var(--gold);font-style:italic">Megoldások</em>
+        </h1>
+      </div>
+      <div class="rv d2">
+        <p style="font-family:var(--ac);font-size:19px;line-height:1.7;color:var(--tx-m);max-width:440px;margin:0 0 28px;font-weight:300">
+          Klinikánkon nem „árlistából" választ, hanem személyre szabott megoldást kap. Akár a természetes arcfiatalítás, akár a szülés utáni regeneráció a célja — kezeléseink a Protocol rendszerébe illeszkedve fejtik ki hatásukat.
+        </p>
+      </div>
+      <div class="rv d3" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#arc" class="bt bt-d">Arcfiatalítás</a>
+        <a href="#test" class="bt bt-o">Test & Regeneráció</a>
+      </div>
+    </div>
+    <div class="rv d2" style="position:relative">
+      <div class="ip" style="height:460px"><span>kezelési pillanat · precízió · orvosi figyelem · természetes fény</span></div>
+      <!-- Protocol overlay -->
+      <div style="position:absolute;bottom:-24px;left:-32px;background:var(--dk);padding:22px 26px;max-width:220px;z-index:2">
+        <span style="font-family:var(--bd);font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold-p);display:block;margin-bottom:6px">Protocol rendszer</span>
+        <span style="font-family:var(--ac);font-size:14px;color:rgba(255,255,255,.7);line-height:1.5;font-weight:300">Prepare → Treat → Recover — minden kezelés egy útvonal része.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARCFIATALÍTÁS & ORVOSESZTÉTIKA ===== -->
+<section id="arc" class="sec" style="padding:120px 40px;background:var(--cream)">
+<div style="max-width:1320px;margin:0 auto">
+
+  <!-- Section header -->
+  <div class="rv" style="margin-bottom:64px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end" class="g2">
+    <div>
+      <span class="lb">II. Pillér · Treat</span>
+      <h2 style="font-family:var(--hd);font-size:40px;font-weight:400;line-height:1.2;color:var(--dk);margin:0">Arcfiatalítás &<br><em style="color:var(--gold)">Orvosesztétika</em></h2>
+    </div>
+    <div>
+      <div class="gl"></div>
+      <p style="font-family:var(--bd);font-size:14px;color:var(--tx-s);line-height:1.7;max-width:440px">
+        Célzott strukturális korrekció az előkészített, felébresztett szöveti alapra építve. Precízió, ami visszaállítja az arc természetes harmóniáját.
+      </p>
+    </div>
+  </div>
+
+  <!-- Treatment Cards -->
+  <div class="rv d1 cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px">
+
+    <!-- BOTOX -->
+    <div class="tc">
+      <div class="tc-inner">
+        <span class="tc-pillar">Mimikai korrekció</span>
+        <h3 class="tc-title">Botox kezelés</h3>
+        <p class="tc-desc">Finom ráncok csökkentése és kipihentebb arckifejezés. A célunk nem a merev arc, hanem a természetes, harmonikus eredmény megőrzése.</p>
+      </div>
+      <a href="botox.html" class="tc-link">
+        Részletek és kombinációk <span class="tc-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- HIALURONSAV -->
+    <div class="tc">
+      <div class="tc-inner">
+        <span class="tc-pillar">Volumenpótlás</span>
+        <h3 class="tc-title">Hialuronsavas töltés</h3>
+        <p class="tc-desc">Az öregedés során elvesztett volumen és az arc kontúrjainak célzott visszaállítása. Pontos anatómiai tervezéssel, diszkrét eredménnyel.</p>
+      </div>
+      <a href="hialuronsav.html" class="tc-link">
+        Részletek és kombinációk <span class="tc-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- BIOSTIMULÁTOROK -->
+    <div class="tc">
+      <div class="tc-inner">
+        <span class="tc-pillar">Kollagénstimuláció</span>
+        <h3 class="tc-title">Biostimulátorok</h3>
+        <p class="tc-desc">Sculptra, Radiesse, Vitaran. Mélyreható kollagén- és elasztintermelés beindítása a szervezet saját folyamatainak aktiválásával.</p>
+      </div>
+      <a href="biostimulatorok.html" class="tc-link">
+        Részletek és kombinációk <span class="tc-arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Protocol connection strip -->
+  <div class="rv d2" style="margin-top:3px;display:grid;grid-template-columns:repeat(3,1fr);gap:0">
+    <div style="background:var(--dk);padding:20px 28px;text-align:center">
+      <span style="font-family:var(--bd);font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold-p)">Prepare</span>
+      <span style="font-family:var(--ac);font-size:13px;color:rgba(255,255,255,.45);display:block;margin-top:4px">ULTIMA előkészítés</span>
+    </div>
+    <div style="background:var(--gold);padding:20px 28px;text-align:center">
+      <span style="font-family:var(--bd);font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7)">Treat</span>
+      <span style="font-family:var(--ac);font-size:13px;color:var(--wh);display:block;margin-top:4px">Célzott korrekció</span>
+    </div>
+    <div style="background:var(--dk);padding:20px 28px;text-align:center">
+      <span style="font-family:var(--bd);font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold-p)">Recover</span>
+      <span style="font-family:var(--ac);font-size:13px;color:rgba(255,255,255,.45);display:block;margin-top:4px">LED Mask regeneráció</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== SZÜLÉS UTÁNI REGENERÁCIÓ ===== -->
+<section id="test" class="sec" style="padding:120px 40px;background:var(--dk);position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;left:50%;width:1px;height:70px;background:linear-gradient(180deg,var(--gold),transparent);opacity:.2;transform:translateX(-50%)"></div>
+
+  <div style="max-width:1320px;margin:0 auto">
+    <div class="grid-asym" style="display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center">
+
+      <!-- Text side -->
+      <div class="rv">
+        <span class="lb lb-l">Test & Rehabilitáció</span>
+        <h2 style="font-family:var(--hd);font-size:38px;font-weight:400;color:var(--wh);line-height:1.15;margin:0 0 16px">
+          Szülés utáni<br><em style="color:var(--gold)">hasfali regeneráció</em>
+        </h2>
+        <div style="width:40px;height:1px;background:var(--gold-p);margin:18px 0;opacity:.35"></div>
+        <p style="font-family:var(--ac);font-size:17px;line-height:1.8;color:rgba(255,255,255,.55);font-weight:300;margin:0 0 24px">
+          A szülés utáni regeneráció nem csupán esztétikai kérdés, hanem a core-stabilitás és a neuromuszkuláris kapcsolatok újraépítése. A diéta önmagában nem oldja meg a megnyúlt fascia-rendszer problémáját.
+        </p>
+
+        <!-- Feature list -->
+        <div style="margin-bottom:32px">
+          <div style="display:flex;align-items:baseline;gap:10px;padding:8px 0">
+            <span style="color:var(--gold);font-size:8px">●</span>
+            <span style="font-family:var(--bd);font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.5">ULTIMA Shape paraméterezett EMS technológia</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;padding:8px 0">
+            <span style="color:var(--gold);font-size:8px">●</span>
+            <span style="font-family:var(--bd);font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.5">730 nm és 940 nm hullámhosszú LED terápia</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;padding:8px 0">
+            <span style="color:var(--gold);font-size:8px">●</span>
+            <span style="font-family:var(--bd);font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.5">Diastasis recti (hasizom szétnyílás) támogatása</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;padding:8px 0">
+            <span style="color:var(--gold);font-size:8px">●</span>
+            <span style="font-family:var(--bd);font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.5">Aktív gyógytorna hatékonyságának kiegészítése</span>
+          </div>
+        </div>
+
+        <a href="szules-utani-regeneracio.html" class="bt bt-ol">Tudományos háttér & részletek →</a>
+      </div>
+
+      <!-- Image side -->
+      <div class="rv d2" style="position:relative">
+        <div class="ip ip-d" style="height:520px;flex-direction:column;gap:12px">
+          <span style="font-style:normal;font-family:var(--bd);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold-p)">[Infografika helye]</span>
+          <span>Szülés utáni hasfali regeneráció — Neuromuszkuláris kapcsolatok újraépítése és Mechanotranszdukció</span>
+        </div>
+        <!-- Safety overlay -->
+        <div style="position:absolute;bottom:-20px;left:-20px;background:var(--dk-m);padding:20px 24px;border-left:2px solid var(--gold);max-width:240px;z-index:2">
+          <span style="font-family:var(--bd);font-size:11.5px;color:rgba(255,255,255,.65);line-height:1.5">Biztonságos alkalmazás 3–6 hónappal a szülés után, orvosi konzultációt követően.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOGYAN ILLESZKEDIK A PROTOCOLBA ===== -->
+<section class="sec" style="padding:80px 40px;background:var(--sand)">
+<div style="max-width:1000px;margin:0 auto">
+  <div class="rv" style="text-align:center;margin-bottom:48px">
+    <span class="lb">Protocol logika</span>
+    <h2 style="font-family:var(--hd);font-size:30px;font-weight:400;color:var(--dk);line-height:1.2">Minden kezelés egy <em style="color:var(--gold)">útvonal része</em></h2>
+  </div>
+  <div class="rv d1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0">
+    <!-- Prepare -->
+    <div style="background:var(--wh);padding:36px 28px;text-align:center;border-right:1px solid var(--brd-l)">
+      <span style="font-family:var(--hd);font-size:12px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:8px">I · Prepare</span>
+      <h4 style="font-family:var(--hd);font-size:20px;color:var(--dk);margin:0 0 10px;font-weight:400">ULTIMA Activation</h4>
+      <p style="font-family:var(--bd);font-size:12.5px;color:var(--tx-s);line-height:1.6">Szöveti előkészítés, mikrokeringés fokozása, izomtónus javítása — kedvezőbb alap a korrekcióhoz.</p>
+    </div>
+    <!-- Treat -->
+    <div style="background:var(--dk);padding:36px 28px;text-align:center">
+      <span style="font-family:var(--hd);font-size:12px;letter-spacing:4px;color:var(--gold-p);text-transform:uppercase;display:block;margin-bottom:8px">II · Treat</span>
+      <h4 style="font-family:var(--hd);font-size:20px;color:var(--wh);margin:0 0 10px;font-weight:400">Medical Precision</h4>
+      <p style="font-family:var(--bd);font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.6">Célzott orvosesztétikai beavatkozás: Botox, filler, biostimulátorok, skin quality — előkészített alapon.</p>
+    </div>
+    <!-- Recover -->
+    <div style="background:var(--wh);padding:36px 28px;text-align:center;border-left:1px solid var(--brd-l)">
+      <span style="font-family:var(--hd);font-size:12px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:8px">III · Recover</span>
+      <h4 style="font-family:var(--hd);font-size:20px;color:var(--dk);margin:0 0 10px;font-weight:400">Regenerative Support</h4>
+      <p style="font-family:var(--bd);font-size:12.5px;color:var(--tx-s);line-height:1.6">LED Mask és ULTIMA utókezelés — regeneráció, bőrminőség fenntartása, tartós eredmény.</p>
+    </div>
+  </div>
+  <div class="rv d2" style="text-align:center;margin-top:32px">
+    <a href="protocol.html" class="bt bt-o">A teljes Protocol megismerése →</a>
+  </div>
+</div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="sec" style="padding:120px 40px;background:var(--warm);text-align:center;position:relative">
+  <div style="position:absolute;top:50%;left:50%;width:280px;height:280px;border-radius:50%;border:1px solid var(--brd-l);transform:translate(-50%,-50%);opacity:.35"></div>
+  <div class="rv" style="position:relative;z-index:1">
+    <span class="lb">Személyes figyelem</span>
+    <h2 style="font-family:var(--hd);font-size:40px;font-weight:400;color:var(--dk);line-height:1.2;max-width:520px;margin:0 auto 14px">
+      Találjuk meg az Ön <em style="color:var(--gold)">ideális útvonalát.</em>
+    </h2>
+    <p style="font-family:var(--ac);font-size:17px;color:var(--tx-m);max-width:420px;margin:0 auto 36px;font-weight:300;line-height:1.7">
+      Minden kezelésünk a The Ultimate Beauty Protocol rendszerébe illeszkedik. Foglaljon időpontot állapotfelmérésre és orvosi konzultációra.
+    </p>
+    <a href="#" class="bt bt-d">Időpontfoglalás</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+<div class="fi">
+<div class="ft-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px">
+  <div>
+    <span style="font-family:var(--hd);font-size:18px;color:var(--wh)">The Ultimate Beauty<span style="color:var(--gold)">.</span></span>
+    <p style="font-family:var(--bd);font-size:12.5px;color:rgba(255,255,255,.3);line-height:1.7;margin-top:14px;max-width:240px">Boutique esztétikai klinika Budán. Integrált rejuvenációs rendszer orvosi háttérrel.</p>
+  </div>
+  <div>
+    <span style="font-family:var(--bd);font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-p);display:block;margin-bottom:16px">Protocol</span>
+    <div style="font-family:var(--bd);font-size:12.5px;color:rgba(255,255,255,.3);line-height:2.2">
+      <a href="protocol.html" style="color:inherit;text-decoration:none;display:block">A rendszer</a>
+      <a href="protocol.html#prepare" style="color:inherit;text-decoration:none;display:block">I. Prepare</a>
+      <a href="protocol.html#treat" style="color:inherit;text-decoration:none;display:block">II. Treat</a>
+      <a href="protocol.html#recover" style="color:inherit;text-decoration:none;display:block">III. Recover</a>
+    </div>
+  </div>
+  <div>
+    <span style="font-family:var(--bd);font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-p);display:block;margin-bottom:16px">Kezelések</span>
+    <div style="font-family:var(--bd);font-size:12.5px;color:rgba(255,255,255,.3);line-height:2.2">
+      <a href="#arc" style="color:inherit;text-decoration:none;display:block">Arcfiatalítás</a>
+      <a href="#test" style="color:inherit;text-decoration:none;display:block">Szülés utáni regeneráció</a>
+      <a href="botox.html" style="color:inherit;text-decoration:none;display:block">Botox</a>
+      <a href="hialuronsav.html" style="color:inherit;text-decoration:none;display:block">Hialuronsav</a>
+    </div>
+  </div>
+  <div>
+    <span style="font-family:var(--bd);font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-p);display:block;margin-bottom:16px">Klinika</span>
+    <div style="font-family:var(--bd);font-size:12.5px;color:rgba(255,255,255,.3);line-height:2.2">
+      <a href="#" style="color:inherit;text-decoration:none;display:block">Konzultáció</a>
+      <a href="#" style="color:inherit;text-decoration:none;display:block">Orvosi háttér</a>
+      <a href="#" style="color:inherit;text-decoration:none;display:block">GYIK</a>
+    </div>
+  </div>
+</div>
+<div style="border-top:1px solid rgba(255,255,255,.05);padding-top:20px;display:flex;justify-content:space-between">
+  <span style="font-family:var(--bd);font-size:11px;color:rgba(255,255,255,.15)">© 2026 The Ultimate Beauty. Minden jog fenntartva.</span>
+  <span style="font-family:var(--bd);font-size:11px;color:rgba(255,255,255,.15)">Budapest · Buda</span>
+</div>
+</div>
+</footer>
+
+<!-- JS -->
+<script>
+window.addEventListener('scroll',()=>{
+  document.querySelector('.nav').style.padding=window.scrollY>40?'13px 0':'20px 0';
+});
+const ob=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(e=>ob.observe(e));
+</script>
+</body>
+</html>
